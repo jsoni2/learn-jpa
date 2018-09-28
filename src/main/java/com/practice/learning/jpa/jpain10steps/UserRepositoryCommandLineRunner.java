@@ -3,6 +3,9 @@
  */
 package com.practice.learning.jpa.jpain10steps;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +13,6 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import com.practice.learning.jpa.jpain10steps.entity.User;
-import com.practice.learning.jpa.jpain10steps.service.UserDAOService;
 import com.practice.learning.jpa.jpain10steps.service.UserRepository;
 
 
@@ -36,6 +38,13 @@ public class UserRepositoryCommandLineRunner implements CommandLineRunner {
 		
 		log.info("New User is created :"+user);
 		
+		Optional<User> userWithIdOne = userRepository.findById(1L);
+		
+		log.info("User is retrieved :"+userWithIdOne);
+		
+		List<User> users = userRepository.findAll();
+		
+		log.info("All Users :"+users);
 	}
 	
 }
